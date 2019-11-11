@@ -1,0 +1,45 @@
+html{
+  text-align: center;
+  font-family: 'Courgette', cursive;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+body { 
+  overflow-x: hidden;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+}
+canvas { 
+  outline: none;
+}
+
+.cab{
+  background: red;
+  padding: 10px;
+  font-size: 30px ;
+}
+
+section{
+  font-size: 20px;
+}
+
+.rotation{
+  display: flex;
+  flex-direction: row;
+}
+.containerMenu{
+  min-width: 200px;
+}
+#angle{
+  padding: 10px;
+}
+.menu{
+  position: relative;
+}
+button{
+  padding: 5px;
+  margin: 5px;
+}
