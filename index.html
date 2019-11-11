@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Oi</title>
 		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <style>
-            body { 
-                overflow-x: hidden;
-                margin: 0;
-            }
-            canvas { width: 10%; height: 10% }
-            .rotation{
-                color: white;
-            }
-            .menu{
-                position: relative;
-                color: white;
-            }
-        </style>
+        <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>Transformações Lineares</title>
 	</head>
 	<body>
-        <div>
-            ola
-            <p>ae</p>
-            <p>ae</p>
+        <div class="cab">
+            <p>
+                Transformações Lineares
+            </p>
         </div>
-        <div name="rotation">
-            <span style="position: absolute; color: white;">Angulo:</span>
-            <div id="angle" style="position: absolute; color: white; margin-top: 20px;"></div>
-            <div class="menu">aeew</div>
+
+        <section>
+            <p>Rotação no Plano</p>
+            <p>* Definimos o eixo em torno do qual o elemento girará</p>
+            <p>* O primeiro ponto do eixo é a origem de transformação padrão (Não precisa ser redefinido)</p>
+            <p>* E por ultimo definimos o segundo ponto do eixo</p>
+        </section>
+
+        <div class="rotation">
+            <div class="containerMenu">
+                <span>Angulo:</span>
+                <div id="angle"></div>
+                <div class="menu">
+                    <p>Menu</p>
+                    <button type="button" id="IniciarRot"> Iniciar Rotação </button>
+                    <button type="button" id="PararRot"> Parar Rotação </button>
+                    <br>
+                    <p>Distancia Eixo</p>
+                    <button type="button" id="DistanciaEXS">+ X </button>
+                    <button type="button" id="DistanciaEYS">+ Y </button>
+                    <button type="button" id="DistanciaEZS">+ Z </button>
+                    <br>
+                    <button type="button" id="DistanciaEXM">- X </button>
+                    <button type="button" id="DistanciaEYM">- Y </button>
+                    <button type="button" id="DistanciaEZM">- Z </button>
+
+                </div>
+            </div>
+            <div class="animation"></div>
         </div>
         <script src="js/three.min.js"></script>
         <script src="js/OrbitControls.js"></script>
