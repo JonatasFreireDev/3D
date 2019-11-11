@@ -25,20 +25,41 @@
             <div class="containerMenu">
                 <span>Angulo:</span>
                 <div id="angle"></div>
+                <hr>
                 <div class="menu">
                     <p>Menu</p>
-                    <button type="button" id="IniciarRot"> Iniciar Rotação </button>
-                    <button type="button" id="PararRot"> Parar Rotação </button>
-                    <br>
-                    <p>Distancia Eixo</p>
-                    <button type="button" id="DistanciaEXS">+ X </button>
-                    <button type="button" id="DistanciaEYS">+ Y </button>
-                    <button type="button" id="DistanciaEZS">+ Z </button>
-                    <br>
-                    <button type="button" id="DistanciaEXM">- X </button>
-                    <button type="button" id="DistanciaEYM">- Y </button>
-                    <button type="button" id="DistanciaEZM">- Z </button>
-
+                    <hr>
+                    <div class="btn-distanciaEixo">
+                        <p>Distancia do Eixo</p>
+                        <button type="button" id="DistanciaEXS">+ X </button>
+                        <button type="button" id="DistanciaEYS">+ Y </button>
+                        <button type="button" id="DistanciaEZS">+ Z </button>
+                        <br>
+                        <button type="button" id="DistanciaEXM">- X </button>
+                        <button type="button" id="DistanciaEYM">- Y </button>
+                        <button type="button" id="DistanciaEZM">- Z </button>
+                    </div>
+                    <hr>
+                    <div class="btn-cubRotation">
+                        <p>Rotação do cubo</p>
+                        <button type="button" id="RotationEXS">+ X </button>
+                        <button type="button" id="RotationEYS">+ Y </button>
+                        <button type="button" id="RotationEZS">+ Z </button>
+                        <br>
+                        <button type="button" id="RotationEXM">- X </button>
+                        <button type="button" id="RotationEYM">- Y </button>
+                        <button type="button" id="RotationEZM">- Z </button>
+                        <br>
+                        <input type="checkbox" id="RotationFullX" name="Rotation" value="male"> X
+                        <input type="checkbox" id="RotationFullY" name="Rotation" value="female"> Y
+                        <input type="checkbox" id="RotationFullZ" name="Rotation" value="other"> Z  
+                    </div>
+                    <hr>
+                    <div class="btn-color">
+                        <p>Cor do Quadrado</p>
+                        <input type="color" id="inputColor"/>
+                    </div>
+                    <hr>
                 </div>
             </div>
             <div class="animation"></div>

@@ -4,6 +4,7 @@ var animation = document.getElementsByClassName("animation")[0];
 var IniciarRot = document.getElementById("IniciarRot");
 var PararRot = document.getElementById("PararRot");
 
+//Altera posição do Quadrado ao clicar em botões
 var DistanciaEXS = document.getElementById("DistanciaEXS");
 var DistanciaEYS = document.getElementById("DistanciaEYS");
 var DistanciaEZS = document.getElementById("DistanciaEZS");
@@ -22,6 +23,29 @@ DistanciaEXM.onclick = () => {translatX = 0; translatX -= 0.1; geometry.translat
 DistanciaEYM.onclick = () => {translatY = 0; translatY -= 0.1; geometry.translate(0,translatY,0);}
 DistanciaEZM.onclick = () => {translatZ = 0; translatZ -= 0.1; geometry.translate(0,0,translatZ);}
 
+//Altera a Rotação do Quadrado ao clicar em botoes
+var RotationEXS = document.getElementById("RotationEXS");
+var RotationEYS = document.getElementById("RotationEYS");
+var RotationEZS = document.getElementById("RotationEZS");
+var RotationEXM = document.getElementById("RotationEXM");
+var RotationEYM = document.getElementById("RotationEYM");
+var RotationEZM = document.getElementById("RotationEZM");
+
+var RotationFullX = document.getElementById("RotationFullX");
+var RotationFullY = document.getElementById("RotationFullY");
+var RotationFullZ = document.getElementById("RotationFullZ");
+
+//Altera cor do Quadrado
+var inputColor = document.getElementById("inputColor");
+
+inputColor.onchange = event => {
+  event.preventDefault();
+  scene.remove( cube );
+  material = new THREE.MeshBasicMaterial( {color: `${inputColor.value}`, wireframe: true} );
+  cube = new THREE.Mesh( geometry, material );
+  scene.add( cube );
+}
+
 // Cria scene
 var scene = new THREE.Scene();
 scene.background = new THREE.Color();
@@ -33,6 +57,14 @@ var camera = new THREE.PerspectiveCamera( 33, window.innerWidth/window.innerHeig
 var renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setSize( window.innerWidth, window.innerHeight );
 animation.appendChild( renderer.domElement );
+
+//Ao alterar o tamanho da janela, é reajustado automaticamente
+window.addEventListener( 'resize', onWindowResize, false );
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize( window.innerWidth, window.innerHeight );
+}
 
 //Cria Controle de camera
 var controls = new THREE.OrbitControls( camera, renderer.domElement );
@@ -53,8 +85,30 @@ scene.add( new THREE.AxesHelper( 6 ) );
 var animate = function () {
     requestAnimationFrame( animate );
 
-    cube.rotation.y += 0.01;
-    angle.innerHTML = Math.floor(THREE.Math.radToDeg(cube.rotation.y) % 360) + "º";
+    //Altera a Rotação do Quadrado ao clicar em botoes
+    RotationEXS.onclick = () => {cube.rotation.x += 0.03;}
+    RotationEYS.onclick = () => {cube.rotation.y += 0.03;}
+    RotationEZS.onclick = () => {cube.rotation.z += 0.03;}
+    RotationEXM.onclick = () => {cube.rotation.x -= 0.03;}
+    RotationEYM.onclick = () => {cube.rotation.y -= 0.03;}
+    RotationEZM.onclick = () => {cube.rotation.z -= 0.03;}
+
+    if(RotationFullX.checked){
+      cube.rotation.x += 0.01;
+    }
+
+    if(RotationFullY.checked){
+      cube.rotation.y += 0.01;
+    }
+
+    if(RotationFullZ.checked){
+      cube.rotation.z += 0.01;
+    }
+
+    
+    angle.innerHTML = "X:" + Math.floor(THREE.Math.radToDeg(cube.rotation.x) % 360) + "º";
+    angle.innerHTML +="<br> Y:"+ Math.floor(THREE.Math.radToDeg(cube.rotation.y) % 360) + "º";
+    angle.innerHTML +="<br> Z:"+ Math.floor(THREE.Math.radToDeg(cube.rotation.z) % 360) + "º";
 
     renderer.render( scene, camera );
 };

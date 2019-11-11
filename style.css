@@ -26,6 +26,10 @@ section{
   font-size: 20px;
 }
 
+hr{
+  margin: 10px;
+}
+
 .rotation{
   display: flex;
   flex-direction: row;
@@ -40,6 +44,27 @@ section{
   position: relative;
 }
 button{
-  padding: 5px;
-  margin: 5px;
+  margin:5px;
+  border:0;
+  border-radius:5px;
+  padding: 10px;
+  height: 42px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-distanciaEixo button, .btn-cubRotation button{
+  width: 50px;
+  background: grey;
+  color: #fff;
+}
+
+.btn-color input[type="color"]{
+  background: transparent;
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
 }
