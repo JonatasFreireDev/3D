@@ -78,34 +78,116 @@ function toggleCube(cube, x, y, z, color="black"){
 
 //Cria o cubo Principal
 var cube = toggleCube(null, 0.5, 0.5, 0.5);
-var posX = cube.geometry.boundingSphere;
- posY = 0.5, posZ = 0.5;
 
+//Cordenadas do cubo principal
+var posX, posY, posZ;
 
-//Cria os cubos Reflexos
+setInterval(() => {
+  posX = cube.geometry.boundingSphere.center.x;
+  posY = cube.geometry.boundingSphere.center.y;
+  posZ = cube.geometry.boundingSphere.center.z;
+},1000);
+
+//Cria os cubos Reflexos e seta eles com a posição contraria ao cubo principal
 var cubeX, cubeXZ, cubeZ;
 
-AddCuboX.onclick = () => {cubeX = toggleCube(cubeX,-0.5,posY,posZ);}
-AddCuboXZ.onclick = () => {cubeXZ = toggleCube(cubeXZ,-0.5,0.5,-0.5);}
-AddCuboZ.onclick = () => {cubeZ = toggleCube(cubeZ, 0.5,0.5,-0.5);}
+AddCuboX.onclick = () => {cubeX = toggleCube(cubeX,-posX,posY,posZ);}
+AddCuboXZ.onclick = () => {cubeXZ = toggleCube(cubeXZ,-posX,posY,-posZ);}
+AddCuboZ.onclick = () => {cubeZ = toggleCube(cubeZ, posX,posY,-posZ);}
 
-var translatX = 0.1; 
-var translatY = 0.1; 
-var translatZ = 0.1; 
+var translatX = 0.0; 
+var translatY = 0.0; 
+var translatZ = 0.0; 
 
-cube.geometry.boundingBox
 DistanciaEXS.onclick = () => {
+  translatX = 0.0;
   translatX += 0.1;
   if(cubeX){
     cubeX.geometry.translate(-translatX,0,0);
   }
+  if(cubeZ){
+    cubeZ.geometry.translate(translatX,0,0);
+  }
+  if(cubeXZ){
+    cubeXZ.geometry.translate(-translatX,0,0);
+  }
   cube.geometry.translate(translatX,0,0);
 }
-DistanciaEYS.onclick = () => {translatY = 0;translatY += 0.1;cube.geometry.translate(0,translatY,0);}
-DistanciaEZS.onclick = () => {translatZ = 0;translatZ += 0.1;cube.geometry.translate(0,0,translatZ);}
-DistanciaEXM.onclick = () => {translatX = 0;translatX -= 0.1;cube.geometry.translate(translatX,0,0);}
-DistanciaEYM.onclick = () => {translatY = 0;translatY -= 0.1;cube.geometry.translate(0,translatY,0);}
-DistanciaEZM.onclick = () => {translatZ = 0;translatZ -= 0.1;cube.geometry.translate(0,0,translatZ);}
+
+DistanciaEYS.onclick = () => {
+  translatY = 0;
+  translatY += 0.1;
+  if(cubeX){
+    cubeX.geometry.translate(0,translatY,0);
+  }
+  if(cubeZ){
+    cubeZ.geometry.translate(0,translatY,0);
+  }
+  if(cubeXZ){
+    cubeXZ.geometry.translate(0,translatY,0);
+  }
+  cube.geometry.translate(0,translatY,0);
+}
+
+DistanciaEZS.onclick = () => {
+  translatZ = 0;
+  translatZ += 0.1;
+  if(cubeX){
+    cubeX.geometry.translate(0,0,translatZ);
+  }
+  if(cubeZ){
+    cubeZ.geometry.translate(0,0,-translatZ);
+  }
+  if(cubeXZ){
+    cubeXZ.geometry.translate(0,0,-translatZ);
+  }
+  cube.geometry.translate(0,0,translatZ);
+}
+
+DistanciaEXM.onclick = () => {
+  translatX = 0.0;
+  translatX -= 0.1;
+  if(cubeX){
+    cubeX.geometry.translate(-translatX,0,0);
+  }
+  if(cubeZ){
+    cubeZ.geometry.translate(translatX,0,0);
+  }
+  if(cubeXZ){
+    cubeXZ.geometry.translate(-translatX,0,0);
+  }
+  cube.geometry.translate(translatX,0,0);
+}
+
+DistanciaEYM.onclick = () => {
+  translatY = 0;
+  translatY -= 0.1;
+  if(cubeX){
+    cubeX.geometry.translate(0,translatY,0);
+  }
+  if(cubeZ){
+    cubeZ.geometry.translate(0,translatY,0);
+  }
+  if(cubeXZ){
+    cubeXZ.geometry.translate(0,translatY,0);
+  }
+  cube.geometry.translate(0,translatY,0);
+}
+
+DistanciaEZM.onclick = () => {
+  translatZ = 0;
+  translatZ -= 0.1;
+  if(cubeX){
+    cubeX.geometry.translate(0,0,translatZ);
+  }
+  if(cubeZ){
+    cubeZ.geometry.translate(0,0,-translatZ);
+  }
+  if(cubeXZ){
+    cubeXZ.geometry.translate(0,0,-translatZ);
+  }
+  cube.geometry.translate(0,0,translatZ);
+}
 
 //Altera cor do Quadrado
 inputColor.onchange = event => {
