@@ -34,21 +34,6 @@ var AddCuboXZ = document.getElementById("AddCuboXZ");
 
 var inputColor = document.getElementById("inputColor");
 
-
-//Cria os cubos Reflexos
-var cubeX, cubeXZ, cubeZ;
-
-var translatX = 0.1; 
-var translatY = 0.1; 
-var translatZ = 0.1; 
-
-DistanciaEXS.onclick = () => {translatX = 0;translatX += 0.1;cube.geometry.translate(translatX,0,0);}
-DistanciaEYS.onclick = () => {translatY = 0;translatY += 0.1;cube.geometry.translate(0,translatY,0);}
-DistanciaEZS.onclick = () => {translatZ = 0;translatZ += 0.1;cube.geometry.translate(0,0,translatZ);}
-DistanciaEXM.onclick = () => {translatX = 0;translatX -= 0.1;cube.geometry.translate(translatX,0,0);}
-DistanciaEYM.onclick = () => {translatY = 0;translatY -= 0.1;cube.geometry.translate(0,translatY,0);}
-DistanciaEZM.onclick = () => {translatZ = 0;translatZ -= 0.1;cube.geometry.translate(0,0,translatZ);}
-
 // Cria scene
 var scene = new THREE.Scene();
 scene.background = new THREE.Color();
@@ -75,58 +60,72 @@ var controls = new THREE.OrbitControls( camera, renderer.domElement );
 camera.position.set( 8, 15, 8 );
 controls.update();
 
-//Função para criar Cubo
-function createCube(x, y, z, color="black"){
-  var geometry = new THREE.BoxGeometry( 1, 1, 1, 4, 4, 4);
-  geometry.translate(x,y,z);
-  var material = new THREE.MeshBasicMaterial( {color: color, wireframe: true} );
-  var cube = new THREE.Mesh( geometry, material );
-  return cube;
-}
-
-//Cria e remove o cubo da cena
-function addCube(cube, x, y, z, color){
+//Cria/remove o cubo da cena
+function toggleCube(cube, x, y, z, color="black"){
   if(cube){
     scene.remove(cube);
     cube = undefined;
     return false;
   }else{
-    var cube = createCube(x, y, z, color);
+    var geometry = new THREE.BoxGeometry( 1, 1, 1, 4, 4, 4);
+    geometry.translate(x,y,z);
+    var material = new THREE.MeshBasicMaterial( {color: color, wireframe: true} );
+    var cube = new THREE.Mesh( geometry, material );
     scene.add(cube);
     return cube;
   }
 }
 
 //Cria o cubo Principal
-var cube = createCube(0.5,0.5,0.5);
+var cube = toggleCube(null, 0.5, 0.5, 0.5);
+var posX = cube.geometry.boundingSphere;
+ posY = 0.5, posZ = 0.5;
 
-AddCuboX.onclick = () => {cubeX = addCube(cubeX,-0.5,0.5,0.5);}
-AddCuboXZ.onclick = () => {cubeXZ = addCube(cubeXZ,-0.5,0.5,-0.5);}
-AddCuboZ.onclick = () => {cubeZ = addCube(cubeZ, 0.5,0.5,-0.5);}
+
+//Cria os cubos Reflexos
+var cubeX, cubeXZ, cubeZ;
+
+AddCuboX.onclick = () => {cubeX = toggleCube(cubeX,-0.5,posY,posZ);}
+AddCuboXZ.onclick = () => {cubeXZ = toggleCube(cubeXZ,-0.5,0.5,-0.5);}
+AddCuboZ.onclick = () => {cubeZ = toggleCube(cubeZ, 0.5,0.5,-0.5);}
+
+var translatX = 0.1; 
+var translatY = 0.1; 
+var translatZ = 0.1; 
+
+cube.geometry.boundingBox
+DistanciaEXS.onclick = () => {
+  translatX += 0.1;
+  if(cubeX){
+    cubeX.geometry.translate(-translatX,0,0);
+  }
+  cube.geometry.translate(translatX,0,0);
+}
+DistanciaEYS.onclick = () => {translatY = 0;translatY += 0.1;cube.geometry.translate(0,translatY,0);}
+DistanciaEZS.onclick = () => {translatZ = 0;translatZ += 0.1;cube.geometry.translate(0,0,translatZ);}
+DistanciaEXM.onclick = () => {translatX = 0;translatX -= 0.1;cube.geometry.translate(translatX,0,0);}
+DistanciaEYM.onclick = () => {translatY = 0;translatY -= 0.1;cube.geometry.translate(0,translatY,0);}
+DistanciaEZM.onclick = () => {translatZ = 0;translatZ -= 0.1;cube.geometry.translate(0,0,translatZ);}
 
 //Altera cor do Quadrado
 inputColor.onchange = event => {
   event.preventDefault();
 
   if(cubeX){
-    scene.remove( cubeX );
-    cubeX = createCube(-0.5,0.5,0.5, inputColor.value);
-    scene.add(cubeX);
+    scene.remove(cubeX); 
+    cubeX = toggleCube(null,-0.5,0.5,0.5,  inputColor.value);
   }
   if(cubeXZ){
-    scene.remove( cubeXZ );
-    cubeXZ = createCube(-0.5,0.5,-0.5, inputColor.value);
-    scene.add(cubeXZ);
+    scene.remove(cubeXZ);
+    cubeXZ = toggleCube(null,-0.5,0.5,-0.5, inputColor.value);
   }
   if(cubeZ){
-    scene.remove( cubeZ );
-    cubeZ = createCube(0.5,0.5,-0.5, inputColor.value);
-    scene.add(cubeZ);
+    scene.remove(cubeZ); 
+    cubeZ = toggleCube(null, 0.5,0.5,-0.5, inputColor.value);
   }
 
-  scene.remove( cube );
-  cube = createCube(0.5,0.5,0.5, inputColor.value);
-  scene.add(cube);
+  scene.remove(cube);
+  cube = toggleCube(null,0.5,0.5,0.5,inputColor.value);
 }
 
 //Adiciona a Scene
@@ -143,7 +142,7 @@ var animate = function () {
     RotationEXM.onclick = () => {cube.rotation.x -= 0.03;}
     RotationEYM.onclick = () => {cube.rotation.y -= 0.03;}
     RotationEZM.onclick = () => {cube.rotation.z -= 0.03;}
-
+  
 
     if(RotationFullX.checked){cube.rotation.x += 0.01;}
     if(RotationFullY.checked){cube.rotation.y += 0.01;}
