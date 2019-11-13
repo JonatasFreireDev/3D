@@ -27,8 +27,11 @@
                 <div id="angle"></div>
                 <hr>
                 <div class="menu">
-                    <p>Menu</p>
-                    <hr>
+                    <div class="addCubo">
+                        <button type="button" id="AddCuboX"> X </button>
+                        <button type="button" id="AddCuboZ"> Z </button>
+                        <button type="button" id="AddCuboXZ"> X Z </button>
+                    </div>
                     <div class="btn-distanciaEixo">
                         <p>Distancia do Eixo</p>
                         <button type="button" id="DistanciaEXS">+ X </button>
@@ -52,7 +55,11 @@
                         <br>
                         <input type="checkbox" id="RotationFullX" name="Rotation" value="male"> X
                         <input type="checkbox" id="RotationFullY" name="Rotation" value="female"> Y
-                        <input type="checkbox" id="RotationFullZ" name="Rotation" value="other"> Z  
+                        <input type="checkbox" id="RotationFullZ" name="Rotation" value="other"> Z 
+                        <br>
+                        <input type="checkbox" id="RotationFullMX" name="Rotation" value="male">- X
+                        <input type="checkbox" id="RotationFullMY" name="Rotation" value="female">- Y
+                        <input type="checkbox" id="RotationFullMZ" name="Rotation" value="other">- Z  
                     </div>
                     <hr>
                     <div class="btn-color">
@@ -67,6 +74,8 @@
         <script src="js/three.min.js"></script>
         <script src="js/OrbitControls.js"></script>
         <script src="js/ConvexGeometry.js"></script>
+        <script src="js/Reflector.js"></script>
+        <script src="js/ReflectorRTT.js"></script>
         <script src="js/script.js"></script>
         
 	</body>

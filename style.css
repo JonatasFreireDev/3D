@@ -68,3 +68,7 @@ button{
   border-radius: 30px;
   cursor: pointer;
 }
+
+.btn-cubRotation input[type="checkbox"]{
+  margin: 12px;
+}
