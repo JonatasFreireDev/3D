@@ -15,21 +15,9 @@ body {
 canvas { 
   outline: none;
 }
-
-.cab{
-  background: red;
-  padding: 10px;
-  font-size: 30px ;
-}
-
-section{
-  font-size: 20px;
-}
-
 hr{
   margin: 10px;
 }
-
 .rotation{
   display: flex;
   flex-direction: row;
@@ -53,13 +41,11 @@ button{
   font-weight: bold;
   cursor: pointer;
 }
-
 .btn-distanciaEixo button, .btn-cubRotation button{
   width: 50px;
   background: grey;
   color: #fff;
 }
-
 .btn-color input[type="color"]{
   background: transparent;
   width: 70px;
@@ -68,7 +54,26 @@ button{
   border-radius: 30px;
   cursor: pointer;
 }
-
+.btn-cubRotation div{
+  margin-left: -20px;
+}
 .btn-cubRotation input[type="checkbox"]{
-  margin: 12px;
+  margin: 10px 0px 0px 20px;
+  padding: 50px;
+}
+footer{
+  padding: 0px;
+}
+footer{
+  display: flex;
+  flex-direction: row;
+  
+}
+footer div{
+  margin: 10px;
+  padding: 5px;
+  max-width: 100px;
+}
+img{
+  width: 100%;
 }

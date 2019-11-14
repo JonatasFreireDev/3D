@@ -3,35 +3,27 @@
 	<head>
 		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="icon" href="img/cubo.png" type="image/gif" sizes="16x16">
         <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
         <title>Transformações Lineares</title>
 	</head>
 	<body>
-        <div class="cab">
-            <p>
-                Transformações Lineares
-            </p>
-        </div>
-
-        <section>
-            <p>Rotação no Plano</p>
-            <p>* Definimos o eixo em torno do qual o elemento girará</p>
-            <p>* O primeiro ponto do eixo é a origem de transformação padrão (Não precisa ser redefinido)</p>
-            <p>* E por ultimo definimos o segundo ponto do eixo</p>
-        </section>
-
         <div class="rotation">
             <div class="containerMenu">
+                <h2>Transformações Lineares</h2>
+                <hr>
                 <span>Angulo:</span>
                 <div id="angle"></div>
                 <hr>
                 <div class="menu">
+                    <p>Espelhos</p>
                     <div class="addCubo">
                         <button type="button" id="AddCuboX"> X </button>
                         <button type="button" id="AddCuboZ"> Z </button>
                         <button type="button" id="AddCuboXZ"> X Z </button>
                     </div>
+                    <hr>
                     <div class="btn-distanciaEixo">
                         <p>Distancia do Eixo</p>
                         <button type="button" id="DistanciaEXS">+ X </button>
@@ -53,20 +45,29 @@
                         <button type="button" id="RotationEYM">- Y </button>
                         <button type="button" id="RotationEZM">- Z </button>
                         <br>
-                        <input type="checkbox" id="RotationFullX" name="Rotation" value="male"> X
-                        <input type="checkbox" id="RotationFullY" name="Rotation" value="female"> Y
-                        <input type="checkbox" id="RotationFullZ" name="Rotation" value="other"> Z 
+                        <div>
+                            <input type="checkbox" id="RotationFullX" name="Rotation" value="male"> X
+                            <input type="checkbox" id="RotationFullY" name="Rotation" value="female"> Y
+                            <input type="checkbox" id="RotationFullZ" name="Rotation" value="other"> Z 
+                        </div>
                         <br>
-                        <input type="checkbox" id="RotationFullMX" name="Rotation" value="male">- X
-                        <input type="checkbox" id="RotationFullMY" name="Rotation" value="female">- Y
-                        <input type="checkbox" id="RotationFullMZ" name="Rotation" value="other">- Z  
+                        <div>
+                            <input type="checkbox" id="RotationFullMX" name="Rotation" value="male">- X
+                            <input type="checkbox" id="RotationFullMY" name="Rotation" value="female">- Y
+                            <input type="checkbox" id="RotationFullMZ" name="Rotation" value="other">- Z  
+                        </div>
                     </div>
                     <hr>
                     <div class="btn-color">
-                        <p>Cor do Quadrado</p>
+                        <p>Cor do Cubo</p>
                         <input type="color" id="inputColor"/>
                     </div>
                     <hr>
+                    
+                    <footer>
+                        <div><a href="https://www.linkedin.com/in/jonatas-freire-557088139/" target="_blank"><img src="img/linkedin.png"></a></div>
+                        <div><a href="https://github.com/freirenaruto" target="_blank"><img src="img/github.png"></a></div>
+                    </footer>
                 </div>
             </div>
             <div class="animation"></div>

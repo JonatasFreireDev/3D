@@ -190,7 +190,6 @@ setInterval(() => {
   rotX = cube.rotation.x;
   rotY = cube.rotation.y;
   rotZ = cube.rotation.z;
-
 },500);
 
 //Cria os cubos Reflexos e seta eles com a posição contraria ao cubo principal
