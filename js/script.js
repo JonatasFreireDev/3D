@@ -61,7 +61,7 @@ camera.position.set( 8, 15, 8 );
 controls.update();
 
 //Cria/remove o cubo da cena
-function toggleCube(cube, x, y, z, color="black"){
+function toggleCube(cube, x, y, z, color="black", rx = 0, ry = 0, rz = 0){
   if(cube){
     scene.remove(cube);
     cube = undefined;
@@ -71,8 +71,109 @@ function toggleCube(cube, x, y, z, color="black"){
     geometry.translate(x,y,z);
     var material = new THREE.MeshBasicMaterial( {color: color, wireframe: true} );
     var cube = new THREE.Mesh( geometry, material );
+    cube.rotation.x = rx;
+    cube.rotation.y = ry;
+    cube.rotation.z = rz;
     scene.add(cube);
     return cube;
+  }
+}
+
+//Movimenta os cubos
+function rotationE(eixo, operador){
+  if(operador == "soma"){
+    switch(eixo){
+
+      case 'x':
+        if(cubeX){
+          cubeX.rotation.x += 0.02;
+        }
+        if(cubeZ){
+          cubeZ.rotation.x += 0.02;
+        }
+        if(cubeXZ){
+          cubeXZ.rotation.x += 0.02;
+        }
+        cube.rotation.x += 0.02;
+        break;
+
+      case 'y':
+        if(cubeX){
+          cubeX.rotation.y += 0.02;
+        }
+        if(cubeZ){
+          cubeZ.rotation.y += 0.02;
+        }
+        if(cubeXZ){
+          cubeXZ.rotation.y += 0.02;
+        }
+        cube.rotation.y += 0.02;
+        break;
+
+      case 'z':
+          if(cubeX){
+            cubeX.rotation.z += 0.02;
+          }
+          if(cubeZ){
+            cubeZ.rotation.z += 0.02;
+          }
+          if(cubeXZ){
+            cubeXZ.rotation.z += 0.02;
+          }
+          cube.rotation.z += 0.02;
+        break;
+
+        default:
+          console.log("Erro");
+          return false;
+    }
+
+  }else if(operador == "subtracao"){
+    switch(eixo){
+
+      case 'x':
+        if(cubeX){
+          cubeX.rotation.x -= 0.02;
+        }
+        if(cubeZ){
+          cubeZ.rotation.x -= 0.02;
+        }
+        if(cubeXZ){
+          cubeXZ.rotation.x -= 0.02;
+        }
+        cube.rotation.x -= 0.02;
+        break;
+
+      case 'y':
+        if(cubeX){
+          cubeX.rotation.y -= 0.02;
+        }
+        if(cubeZ){
+          cubeZ.rotation.y -= 0.02;
+        }
+        if(cubeXZ){
+          cubeXZ.rotation.y -= 0.02;
+        }
+        cube.rotation.y -= 0.02;
+        break;
+
+      case 'z':
+          if(cubeX){
+            cubeX.rotation.z -= 0.02;
+          }
+          if(cubeZ){
+            cubeZ.rotation.z -= 0.02;
+          }
+          if(cubeXZ){
+            cubeXZ.rotation.z -= 0.02;
+          }
+          cube.rotation.z -= 0.02;
+        break;
+
+        default:
+          console.log("Erro");
+          return false;
+    }
   }
 }
 
@@ -80,24 +181,49 @@ function toggleCube(cube, x, y, z, color="black"){
 var cube = toggleCube(null, 0.5, 0.5, 0.5);
 
 //Cordenadas do cubo principal
-var posX, posY, posZ;
+var posX, posY, posZ, rotX, rotY, rotZ;
 
 setInterval(() => {
   posX = cube.geometry.boundingSphere.center.x;
   posY = cube.geometry.boundingSphere.center.y;
   posZ = cube.geometry.boundingSphere.center.z;
-},1000);
+  rotX = cube.rotation.x;
+  rotY = cube.rotation.y;
+  rotZ = cube.rotation.z;
+
+},500);
 
 //Cria os cubos Reflexos e seta eles com a posição contraria ao cubo principal
 var cubeX, cubeXZ, cubeZ;
 
-AddCuboX.onclick = () => {cubeX = toggleCube(cubeX,-posX,posY,posZ);}
-AddCuboXZ.onclick = () => {cubeXZ = toggleCube(cubeXZ,-posX,posY,-posZ);}
-AddCuboZ.onclick = () => {cubeZ = toggleCube(cubeZ, posX,posY,-posZ);}
+AddCuboX.onclick = () => {cubeX = toggleCube(cubeX,-posX,posY,posZ, undefined, rotX, rotY, rotZ);}
+AddCuboXZ.onclick = () => {cubeXZ = toggleCube(cubeXZ,-posX,posY,-posZ, undefined, rotX, rotY, rotZ);}
+AddCuboZ.onclick = () => {cubeZ = toggleCube(cubeZ, posX,posY,-posZ, undefined, rotX, rotY, rotZ);}
 
 var translatX = 0.0; 
 var translatY = 0.0; 
 var translatZ = 0.0; 
+
+// var translat = 0.0;
+
+// function translateCubs(x=0,y=0,z=0, operation){
+//   if(operation == "soma"){
+//     translat += 0.1;
+//   }else if(operation == "subtrai"){
+//     translat -= 0.1;
+//   }
+  
+//   if(cubeX){
+//     cubeX.geometry.translate(x,y,z);
+//   }
+//   if(cubeZ){
+//     cubeZ.geometry.translate(x,y,z);
+//   }
+//   if(cubeXZ){
+//     cubeXZ.geometry.translate(x,y,z);
+//   }
+//   cube.geometry.translate(x,y,z);
+// }
 
 DistanciaEXS.onclick = () => {
   translatX = 0.0;
@@ -218,20 +344,20 @@ var animate = function () {
     requestAnimationFrame( animate );
 
     //Altera a Rotação do Quadrado ao clicar em botoe
-    RotationEXS.onclick = () => {cube.rotation.x += 0.03;}
-    RotationEYS.onclick = () => {cube.rotation.y += 0.03;}
-    RotationEZS.onclick = () => {cube.rotation.z += 0.03;}
-    RotationEXM.onclick = () => {cube.rotation.x -= 0.03;}
-    RotationEYM.onclick = () => {cube.rotation.y -= 0.03;}
-    RotationEZM.onclick = () => {cube.rotation.z -= 0.03;}
+    RotationEXS.onclick = () => {rotationE("x", "soma");}
+    RotationEYS.onclick = () => {rotationE("y", "soma");}
+    RotationEZS.onclick = () => {rotationE("z", "soma");}
+    RotationEXM.onclick = () => {rotationE("x", "subtracao");}
+    RotationEYM.onclick = () => {rotationE("y", "subtracao");}
+    RotationEZM.onclick = () => {rotationE("z", "subtracao");}
   
 
-    if(RotationFullX.checked){cube.rotation.x += 0.01;}
-    if(RotationFullY.checked){cube.rotation.y += 0.01;}
-    if(RotationFullZ.checked){cube.rotation.z += 0.01;}
-    if(RotationFullMX.checked){cube.rotation.x -= 0.01;}
-    if(RotationFullMY.checked){cube.rotation.y -= 0.01;}
-    if(RotationFullMZ.checked){cube.rotation.z -= 0.01;}
+    if(RotationFullX.checked){rotationE("x", "soma");}
+    if(RotationFullY.checked){rotationE("y", "soma");}
+    if(RotationFullZ.checked){rotationE("z", "soma");}
+    if(RotationFullMX.checked){rotationE("x", "subtracao");}
+    if(RotationFullMY.checked){rotationE("y", "subtracao");}
+    if(RotationFullMZ.checked){rotationE("z", "subtracao");}
     
     angle.innerHTML = "X:" + Math.floor(THREE.Math.radToDeg(cube.rotation.x) % 360) + "º";
     angle.innerHTML +=" Y:"+ Math.floor(THREE.Math.radToDeg(cube.rotation.y) % 360) + "º";
