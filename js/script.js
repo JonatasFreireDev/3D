@@ -1,5 +1,5 @@
 //Variaveis Gerais
-var angle = document.getElementById("angle");
+var angle = document.getElementsByName("angle");
 var animation = document.getElementsByClassName("animation")[0];
 var IniciarRot = document.getElementById("IniciarRot");
 var PararRot = document.getElementById("PararRot");
@@ -29,10 +29,18 @@ var RotationFullMY = document.getElementById("RotationFullMY");
 var RotationFullMZ = document.getElementById("RotationFullMZ");
 
 var AddCuboX = document.getElementById("AddCuboX");
+var AddCuboY = document.getElementById("AddCuboY");
 var AddCuboZ = document.getElementById("AddCuboZ");
+var AddCuboYZ = document.getElementById("AddCuboYZ");
 var AddCuboXZ = document.getElementById("AddCuboXZ");
+var AddCuboXY = document.getElementById("AddCuboXY");
+var AddOrigem = document.getElementById("AddOrigem");
+
+var ResetarDistancia = document.getElementById("ResetarDistancia");
+var ResetarRotation = document.getElementById("ResetarRotation");
 
 var inputColor = document.getElementById("inputColor");
+inputColor.value = '#000000';
 
 // Cria scene
 var scene = new THREE.Scene();
@@ -88,11 +96,23 @@ function rotationE(eixo, operador){
         if(cubeX){
           cubeX.rotation.x += 0.02;
         }
+        if(cubeY){
+          cubeY.rotation.x += 0.02;
+        }
         if(cubeZ){
           cubeZ.rotation.x += 0.02;
         }
         if(cubeXZ){
           cubeXZ.rotation.x += 0.02;
+        }
+        if(cubeXY){
+          cubeXY.rotation.x += 0.02;
+        }
+        if(cubeYZ){
+          cubeYZ.rotation.x += 0.02;
+        }
+        if(cubeAll){
+          cubeAll.rotation.x += 0.02;
         }
         cube.rotation.x += 0.02;
         break;
@@ -101,11 +121,23 @@ function rotationE(eixo, operador){
         if(cubeX){
           cubeX.rotation.y += 0.02;
         }
+        if(cubeY){
+          cubeY.rotation.y += 0.02;
+        }
         if(cubeZ){
           cubeZ.rotation.y += 0.02;
         }
         if(cubeXZ){
           cubeXZ.rotation.y += 0.02;
+        }
+        if(cubeXY){
+          cubeXY.rotation.y += 0.02;
+        }
+        if(cubeYZ){
+          cubeYZ.rotation.y += 0.02;
+        }
+        if(cubeAll){
+          cubeAll.rotation.y += 0.02;
         }
         cube.rotation.y += 0.02;
         break;
@@ -114,11 +146,23 @@ function rotationE(eixo, operador){
           if(cubeX){
             cubeX.rotation.z += 0.02;
           }
+          if(cubeY){
+            cubeY.rotation.z += 0.02;
+          }
           if(cubeZ){
             cubeZ.rotation.z += 0.02;
           }
           if(cubeXZ){
             cubeXZ.rotation.z += 0.02;
+          }
+          if(cubeXY){
+            cubeXY.rotation.z += 0.02;
+          }
+          if(cubeYZ){
+            cubeYZ.rotation.z += 0.02;
+          }
+          if(cubeAll){
+            cubeAll.rotation.z += 0.02;
           }
           cube.rotation.z += 0.02;
         break;
@@ -135,11 +179,23 @@ function rotationE(eixo, operador){
         if(cubeX){
           cubeX.rotation.x -= 0.02;
         }
+        if(cubeY){
+          cubeY.rotation.x -= 0.02;
+        }
         if(cubeZ){
           cubeZ.rotation.x -= 0.02;
         }
         if(cubeXZ){
           cubeXZ.rotation.x -= 0.02;
+        }
+        if(cubeXY){
+          cubeXY.rotation.x -= 0.02;
+        }
+        if(cubeYZ){
+          cubeYZ.rotation.x -= 0.02;
+        }
+        if(cubeAll){
+          cubeAll.rotation.x -= 0.02;
         }
         cube.rotation.x -= 0.02;
         break;
@@ -148,11 +204,23 @@ function rotationE(eixo, operador){
         if(cubeX){
           cubeX.rotation.y -= 0.02;
         }
+        if(cubeY){
+          cubeY.rotation.y -= 0.02;
+        }
         if(cubeZ){
           cubeZ.rotation.y -= 0.02;
         }
         if(cubeXZ){
           cubeXZ.rotation.y -= 0.02;
+        }
+        if(cubeXY){
+          cubeXY.rotation.y -= 0.02;
+        }
+        if(cubeYZ){
+          cubeYZ.rotation.y -= 0.02;
+        }
+        if(cubeAll){
+          cubeAll.rotation.y -= 0.02;
         }
         cube.rotation.y -= 0.02;
         break;
@@ -161,11 +229,23 @@ function rotationE(eixo, operador){
           if(cubeX){
             cubeX.rotation.z -= 0.02;
           }
+          if(cubeY){
+            cubeY.rotation.z -= 0.02;
+          }
           if(cubeZ){
             cubeZ.rotation.z -= 0.02;
           }
           if(cubeXZ){
             cubeXZ.rotation.z -= 0.02;
+          }
+          if(cubeXY){
+            cubeXY.rotation.z -= 0.02;
+          }
+          if(cubeYZ){
+            cubeYZ.rotation.z -= 0.02;
+          }
+          if(cubeAll){
+            cubeAll.rotation.z -= 0.02;
           }
           cube.rotation.z -= 0.02;
         break;
@@ -174,6 +254,47 @@ function rotationE(eixo, operador){
           console.log("Erro");
           return false;
     }
+  }else if (operador == "reset"){
+    rotX = 0, rotY = 0, rotZ = 0;
+
+    if(cubeX){
+      cubeX.rotation.x = rotX;
+      cubeX.rotation.y = rotY;
+      cubeX.rotation.z = rotZ;
+    }
+    if(cubeY){
+      cubeY.rotation.x = rotX;
+      cubeY.rotation.y = rotY;
+      cubeY.rotation.z = rotZ;
+    }
+    if(cubeZ){
+      cubeZ.rotation.x = rotX;
+      cubeZ.rotation.y = rotY;
+      cubeZ.rotation.z = rotZ;
+    }
+    if(cubeXZ){
+      cubeXZ.rotation.x = rotX;
+      cubeXZ.rotation.y = rotY;
+      cubeXZ.rotation.z = rotZ;
+    }
+    if(cubeXY){
+      cubeXY.rotation.x = rotX;
+      cubeXY.rotation.y = rotY;
+      cubeXY.rotation.z = rotZ;
+    }
+    if(cubeYZ){
+      cubeYZ.rotation.x = rotX;
+      cubeYZ.rotation.y = rotY;
+      cubeYZ.rotation.z = rotZ;
+    }
+    if(cubeAll){
+      cubeAll.rotation.x = rotX;
+      cubeAll.rotation.y = rotY;
+      cubeAll.rotation.z = rotZ;
+    }
+    cube.rotation.x = rotX;
+    cube.rotation.y = rotY;
+    cube.rotation.z = rotZ;
   }
 }
 
@@ -193,36 +314,19 @@ setInterval(() => {
 },500);
 
 //Cria os cubos Reflexos e seta eles com a posição contraria ao cubo principal
-var cubeX, cubeXZ, cubeZ;
+var cubeX, cubeY, cubeZ, cubeXZ, cubeXY, cubeYZ, cubeAll;
 
-AddCuboX.onclick = () => {cubeX = toggleCube(cubeX,-posX,posY,posZ, undefined, rotX, rotY, rotZ);}
-AddCuboXZ.onclick = () => {cubeXZ = toggleCube(cubeXZ,-posX,posY,-posZ, undefined, rotX, rotY, rotZ);}
-AddCuboZ.onclick = () => {cubeZ = toggleCube(cubeZ, posX,posY,-posZ, undefined, rotX, rotY, rotZ);}
+AddCuboX.onclick = () => {cubeX = toggleCube(cubeX, -posX, posY, posZ, inputColor.value, rotX, rotY, rotZ);}
+AddCuboY.onclick = () => {cubeY = toggleCube(cubeY, posX, -posY, posZ, inputColor.value, rotX, rotY, rotZ);}
+AddCuboZ.onclick = () => {cubeZ = toggleCube(cubeZ, posX, posY, -posZ, inputColor.value, rotX, rotY, rotZ);}
+AddCuboXZ.onclick = () => {cubeXZ = toggleCube(cubeXZ, -posX, posY, -posZ, inputColor.value, rotX, rotY, rotZ);}
+AddCuboXY.onclick = () => {cubeXY = toggleCube(cubeXY, -posX, -posY, posZ, inputColor.value, rotX, rotY, rotZ);}
+AddCuboYZ.onclick = () => {cubeYZ = toggleCube(cubeYZ, posX, -posY, -posZ, inputColor.value, rotX, rotY, rotZ);}
+AddOrigem.onclick = () => {cubeAll = toggleCube(cubeAll, -posX, -posY, -posZ, inputColor.value, rotX, rotY, rotZ);}
 
 var translatX = 0.0; 
 var translatY = 0.0; 
 var translatZ = 0.0; 
-
-// var translat = 0.0;
-
-// function translateCubs(x=0,y=0,z=0, operation){
-//   if(operation == "soma"){
-//     translat += 0.1;
-//   }else if(operation == "subtrai"){
-//     translat -= 0.1;
-//   }
-  
-//   if(cubeX){
-//     cubeX.geometry.translate(x,y,z);
-//   }
-//   if(cubeZ){
-//     cubeZ.geometry.translate(x,y,z);
-//   }
-//   if(cubeXZ){
-//     cubeXZ.geometry.translate(x,y,z);
-//   }
-//   cube.geometry.translate(x,y,z);
-// }
 
 DistanciaEXS.onclick = () => {
   translatX = 0.0;
@@ -230,11 +334,23 @@ DistanciaEXS.onclick = () => {
   if(cubeX){
     cubeX.geometry.translate(-translatX,0,0);
   }
+  if(cubeY){
+    cubeY.geometry.translate(translatX,0,0);
+  }
   if(cubeZ){
     cubeZ.geometry.translate(translatX,0,0);
   }
   if(cubeXZ){
     cubeXZ.geometry.translate(-translatX,0,0);
+  }
+  if(cubeXY){
+    cubeXY.geometry.translate(-translatX,0,0);
+  }
+  if(cubeYZ){
+    cubeYZ.geometry.translate(translatX,0,0);
+  }
+  if(cubeAll){
+    cubeAll.geometry.translate(-translatX,0,0);
   }
   cube.geometry.translate(translatX,0,0);
 }
@@ -245,11 +361,23 @@ DistanciaEYS.onclick = () => {
   if(cubeX){
     cubeX.geometry.translate(0,translatY,0);
   }
+  if(cubeY){
+    cubeY.geometry.translate(0,-translatY,0);
+  }
   if(cubeZ){
     cubeZ.geometry.translate(0,translatY,0);
   }
   if(cubeXZ){
     cubeXZ.geometry.translate(0,translatY,0);
+  }
+  if(cubeXY){
+    cubeXY.geometry.translate(0,-translatY,0);
+  }
+  if(cubeYZ){
+    cubeYZ.geometry.translate(0,-translatY,0);
+  }
+  if(cubeAll){
+    cubeAll.geometry.translate(0,-translatY,0);
   }
   cube.geometry.translate(0,translatY,0);
 }
@@ -260,11 +388,23 @@ DistanciaEZS.onclick = () => {
   if(cubeX){
     cubeX.geometry.translate(0,0,translatZ);
   }
+  if(cubeY){
+    cubeY.geometry.translate(0,0,translatZ);
+  }
   if(cubeZ){
     cubeZ.geometry.translate(0,0,-translatZ);
   }
   if(cubeXZ){
     cubeXZ.geometry.translate(0,0,-translatZ);
+  }
+  if(cubeXY){
+    cubeXY.geometry.translate(0,0,translatZ);
+  }
+  if(cubeYZ){
+    cubeYZ.geometry.translate(0,0,-translatZ);
+  }
+  if(cubeAll){
+    cubeAll.geometry.translate(0,0,-translatZ);
   }
   cube.geometry.translate(0,0,translatZ);
 }
@@ -275,11 +415,23 @@ DistanciaEXM.onclick = () => {
   if(cubeX){
     cubeX.geometry.translate(-translatX,0,0);
   }
+  if(cubeY){
+    cubeY.geometry.translate(translatX,0,0);
+  }
   if(cubeZ){
     cubeZ.geometry.translate(translatX,0,0);
   }
   if(cubeXZ){
     cubeXZ.geometry.translate(-translatX,0,0);
+  }
+  if(cubeXY){
+    cubeXY.geometry.translate(-translatX,0,0);
+  }
+  if(cubeYZ){
+    cubeYZ.geometry.translate(translatX,0,0);
+  }
+  if(cubeAll){
+    cubeAll.geometry.translate(-translatX,0,0);
   }
   cube.geometry.translate(translatX,0,0);
 }
@@ -290,11 +442,23 @@ DistanciaEYM.onclick = () => {
   if(cubeX){
     cubeX.geometry.translate(0,translatY,0);
   }
+  if(cubeY){
+    cubeY.geometry.translate(0,-translatY,0);
+  }
   if(cubeZ){
     cubeZ.geometry.translate(0,translatY,0);
   }
   if(cubeXZ){
     cubeXZ.geometry.translate(0,translatY,0);
+  }
+  if(cubeXY){
+    cubeXY.geometry.translate(0,-translatY,0);
+  }
+  if(cubeYZ){
+    cubeYZ.geometry.translate(0,-translatY,0);
+  }
+  if(cubeAll){
+    cubeAll.geometry.translate(0,-translatY,0);
   }
   cube.geometry.translate(0,translatY,0);
 }
@@ -302,8 +466,12 @@ DistanciaEYM.onclick = () => {
 DistanciaEZM.onclick = () => {
   translatZ = 0;
   translatZ -= 0.1;
+
   if(cubeX){
     cubeX.geometry.translate(0,0,translatZ);
+  }
+  if(cubeY){
+    cubeY.geometry.translate(0,0,translatZ);
   }
   if(cubeZ){
     cubeZ.geometry.translate(0,0,-translatZ);
@@ -311,7 +479,43 @@ DistanciaEZM.onclick = () => {
   if(cubeXZ){
     cubeXZ.geometry.translate(0,0,-translatZ);
   }
+  if(cubeXY){
+    cubeXY.geometry.translate(0,0,translatZ);
+  }
+  if(cubeYZ){
+    cubeYZ.geometry.translate(0,0,-translatZ);
+  }
+  if(cubeAll){
+    cubeAll.geometry.translate(0,0,-translatZ);
+  }
   cube.geometry.translate(0,0,translatZ);
+}
+
+ResetarDistancia.onclick = () => {
+  posX -= 0.5, posY -= 0.5, posZ -= 0.5;
+
+  if(cubeX){
+    cubeX.geometry.translate(posX,-posY,-posZ);
+  }
+  if(cubeY){
+    cubeY.geometry.translate(-posX,posY,-posZ);
+  }
+  if(cubeZ){
+    cubeZ.geometry.translate(-posX,-posY,posZ);
+  }
+  if(cubeXZ){
+    cubeXZ.geometry.translate(posX,-posY,posZ);
+  }
+  if(cubeXY){
+    cubeXY.geometry.translate(posX,posY,-posZ);
+  }
+  if(cubeYZ){
+    cubeYZ.geometry.translate(-posX,posY,posZ);
+  }
+  if(cubeAll){
+    cubeAll.geometry.translate(posX,posY,posZ);
+  }
+  cube.geometry.translate(-posX,-posY,-posZ);
 }
 
 //Altera cor do Quadrado
@@ -320,20 +524,88 @@ inputColor.onchange = event => {
 
   if(cubeX){
     scene.remove(cubeX); 
-    cubeX = toggleCube(null,-0.5,0.5,0.5,  inputColor.value);
+    cubeX = toggleCube(null, -posX, posY, posZ, inputColor.value, rotX, rotY, rotZ);
   }
-  if(cubeXZ){
-    scene.remove(cubeXZ);
-    cubeXZ = toggleCube(null,-0.5,0.5,-0.5, inputColor.value);
+  if(cubeY){
+    scene.remove(cubeY); 
+    cubeY = toggleCube(null, posX, -posY, posZ, inputColor.value, rotX, rotY, rotZ);
   }
   if(cubeZ){
     scene.remove(cubeZ); 
-    cubeZ = toggleCube(null, 0.5,0.5,-0.5, inputColor.value);
+    cubeZ = toggleCube(null, posX, posY, -posZ, inputColor.value, rotX, rotY, rotZ);
+  }
+  if(cubeXZ){
+    scene.remove(cubeXZ);
+    cubeXZ = toggleCube(null, -posX, posY, -posZ, inputColor.value, rotX, rotY, rotZ);
+  }
+  if(cubeXY){
+    scene.remove(cubeXY);
+    cubeXY = toggleCube(null, -posX, -posY, posZ, inputColor.value, rotX, rotY, rotZ);
+  }
+  if(cubeYZ){
+    scene.remove(cubeYZ);
+    cubeYZ = toggleCube(null, posX, -posY, -posZ, inputColor.value, rotX, rotY, rotZ);
+  }
+  if(cubeAll){
+    scene.remove(cubeAll);
+    cubeAll = toggleCube(null, -posX, -posY, -posZ, inputColor.value, rotX, rotY, rotZ);
   }
 
   scene.remove(cube);
-  cube = toggleCube(null,0.5,0.5,0.5,inputColor.value);
+  cube = toggleCube(null, posX, posY, posZ, inputColor.value, rotX, rotY, rotZ);
 }
+
+// function procEvent(element){
+//   let input = document.createElement('input');
+//   let currentPosition = Array.from(element.parentNode.children).indexOf(element);
+//   let tempArray = angle;
+//   let save = function() {
+//     let div = document.createElement('div'); 
+//     div.setAttribute('id', 'angle');
+//     div.setAttribute('name', 'angle');
+//     div.innerHTML = input.value;
+//     input.value %= 100;
+//     console.log(input.value);
+//     div.addEventListener('click', function () {
+//       procEvent(this);
+//     });
+//     input.replaceWith(div);
+//     switch (currentPosition) {
+//       case 0:
+//         cube.rotation.x = div.innerHTML;
+//         console.log('X:' + cube.rotation.x);
+//         break;
+//      case 1:
+//         cube.rotation.y = Math.floor(THREE.Math.radToDeg(input.value) % 360);
+//         console.log('Y:' + cube.rotation.y);
+//         break;
+    
+//       case 2:
+//         cube.rotation.z = Math.floor(THREE.Math.radToDeg(input.value) % 360);
+//         console.log('Z:' + cube.rotation.z);
+//         break;
+//      default:
+//         break;
+//     }
+//    for (let index = 0; index < angle.length; index++) {
+//       if (index == currentPosition) {
+//         angle[index] = div;
+//       } 
+//       else {
+//         angle[index] = tempArray[index];
+//       }
+//     }
+//   };
+//  element.replaceWith(input);
+//   input.addEventListener('blur', save);
+//   input.focus();  
+// }
+
+// angle.forEach(element => {
+//   element.addEventListener('click', function() {
+//     procEvent(element);
+//   })
+// });
 
 //Adiciona a Scene
 scene.add( new THREE.AxesHelper( 6 ) );
@@ -349,6 +621,7 @@ var animate = function () {
     RotationEXM.onclick = () => {rotationE("x", "subtracao");}
     RotationEYM.onclick = () => {rotationE("y", "subtracao");}
     RotationEZM.onclick = () => {rotationE("z", "subtracao");}
+    ResetarRotation.onclick = () => {rotationE('all', 'reset')};
   
 
     if(RotationFullX.checked){rotationE("x", "soma");}
@@ -358,9 +631,9 @@ var animate = function () {
     if(RotationFullMY.checked){rotationE("y", "subtracao");}
     if(RotationFullMZ.checked){rotationE("z", "subtracao");}
     
-    angle.innerHTML = "X:" + Math.floor(THREE.Math.radToDeg(cube.rotation.x) % 360) + "º";
-    angle.innerHTML +=" Y:"+ Math.floor(THREE.Math.radToDeg(cube.rotation.y) % 360) + "º";
-    angle.innerHTML +=" Z:"+ Math.floor(THREE.Math.radToDeg(cube.rotation.z) % 360) + "º";
+    angle[0].innerHTML = "X:" + Math.floor(THREE.Math.radToDeg(cube.rotation.x) % 360) + "º";
+    angle[1].innerHTML = "Y:" + Math.floor(THREE.Math.radToDeg(cube.rotation.y) % 360) + "º";
+    angle[2].innerHTML = "Z:" + Math.floor(THREE.Math.radToDeg(cube.rotation.z) % 360) + "º";
 
     renderer.render( scene, camera );
 };

@@ -13,16 +13,35 @@
             <div class="containerMenu">
                 <h2>Transformações Lineares</h2>
                 <hr>
-                <span>Angulo:</span>
-                <div id="angle"></div>
+                <div>
+                    <span>Angulo:</span>
+                </div>
+                <div id="angleSection">
+                    <div id="angle" name="angle"></div>
+                    <div id="angle" name="angle"></div>
+                    <div id="angle" name="angle"></div>
+                </div>
                 <hr>
                 <div class="menu">
-                    <p>Espelhos</p>
+                    <h3>Espelhos</h3>
+                    <p>Plano</p>
                     <div class="addCubo">
                         <button type="button" id="AddCuboX"> X </button>
+                        <button type="button" id="AddCuboY"> Y </button>
                         <button type="button" id="AddCuboZ"> Z </button>
-                        <button type="button" id="AddCuboXZ"> X Z </button>
                     </div>
+                    <div>
+                        <p>Eixo</p>
+                        <div class="addCubo">
+                            <button type="button" id="AddCuboYZ"> X </button>
+                            <button type="button" id="AddCuboXZ"> Y </button>
+                            <button type="button" id="AddCuboXY"> Z </button>
+                        </div>
+                        <div class="addCubo">
+                            <button type="button" id="AddOrigem"> Origem </button>
+                        </div>
+                    </div>
+                    
                     <hr>
                     <div class="btn-distanciaEixo">
                         <p>Distancia do Eixo</p>
@@ -33,6 +52,8 @@
                         <button type="button" id="DistanciaEXM">- X </button>
                         <button type="button" id="DistanciaEYM">- Y </button>
                         <button type="button" id="DistanciaEZM">- Z </button>
+                        <br>
+                        <button type="button" id="ResetarDistancia" style="display: block; width: 90% !important; margin: auto;">Resetar</button>
                     </div>
                     <hr>
                     <div class="btn-cubRotation">
@@ -56,6 +77,8 @@
                             <input type="checkbox" id="RotationFullMY" name="Rotation" value="female">- Y
                             <input type="checkbox" id="RotationFullMZ" name="Rotation" value="other">- Z  
                         </div>
+                        <br>
+                        <button type="button" id="ResetarRotation" style="display: block; width: 90% !important; margin: auto;">Resetar</button>
                     </div>
                     <hr>
                     <div class="btn-color">

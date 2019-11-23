@@ -4,6 +4,11 @@ O intuito é exemplificar a rotação do cubo nos eixos x, y e z, além de mostr
 
 O programa foi desenvolvido com o ThreeJS, se trata de uma biblioteca Javascript, na qual é gerado um canvas no HTML, nele é adicionado cenas, câmeras, luz, formas geométricas, entre muitas outras coisas. A documentação do ThreeJs conta com vários exemplos práticos, e muito conteúdo para consulta.
 
+## Desenvolvedores
+
+- [Jonatas Freire](https://www.linkedin.com/in/jonatas-freire-557088139/) Head & Desenvolvedor
+- [Kaio Rauta](https://www.linkedin.com/in/kaio-rauta/) Editor
+
 <a href="https://threejs.org/">ThreeJs</a>
 
 <img src="img/snap1.png" title="FVCproductions" alt="FVCproductions">
